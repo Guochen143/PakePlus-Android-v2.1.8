@@ -1,40 +1,99 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="./favicon.ico">
-  <title>管理系统</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-    .loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#2d3a4b;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;transition:opacity 0.6s cubic-bezier(0.22,1,0.36,1);touch-action:none}
-    .loading-overlay.hidden{opacity:0;pointer-events:none}
-    .loading-spinner{border:8px solid rgba(255,255,255,0.2);border-top:8px solid #409eff;border-radius:50%;width:80px;height:80px;animation:spin 1.5s cubic-bezier(0.4,0,0.2,1) infinite;margin-bottom:24px}
-    .loading-message{font-size:18px;line-height:1.5;color:#fff;font-weight:400;margin-bottom:16px}
-    .loading-progress{width:300px;height:6px;background-color:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden}
-    .progress-bar{height:100%;width:0%;background-color:#409eff;border-radius:3px;transition:width 0.4s cubic-bezier(0.4,0,0.2,1)}
-    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-    @media(max-width:768px){.loading-spinner{width:64px;height:64px;border-width:6px;margin-bottom:20px}.loading-message{font-size:16px;margin-bottom:12px}.loading-progress{width:240px;height:5px;border-radius:2.5px}.progress-bar{border-radius:2.5px}}
-    @media(max-width:375px){.loading-spinner{width:56px;height:56px}.loading-progress{width:200px}}
-  </style>
-  <script type="module" crossorigin src="./assets/js/index-BHp4XSkX.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/js/vue-vendor-xyK4Mn44.js">
-  <link rel="modulepreload" crossorigin href="./assets/js/element-icons-offnyjZC.js">
-  <link rel="modulepreload" crossorigin href="./assets/js/element-plus-C8lQ6gHf.js">
-  <link rel="modulepreload" crossorigin href="./assets/js/axios-By3m6ZKB.js">
-  <link rel="stylesheet" crossorigin href="./assets/css/index-BxIUC1Bd.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/keyframes.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <title>2048</title>
 </head>
+
 <body>
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner"></div>
-    <div class="loading-message">正在加载系统资源，请耐心等待...</div>
-    <div class="loading-progress">
-      <div class="progress-bar" id="progressBar"></div>
+    <div class="container">
+        <div class="heading">
+            <h1 class="title">
+                <a href="">2048</a>
+            </h1>
+            <div class="scores-container">
+                <div class="score-container">
+                    <p class="title">SCORE</p>
+                    <P class="score">0</P>
+                    <div class="score-addition">
+                        +4
+                    </div>
+                </div>
+                <div class="best-container">
+                    <p class="title">BEST</p>
+                    <P class="score">66666</P>
+                </div>
+            </div>
+        </div>
+        <div class="game-intro">
+            <a href="" class="restart-btn">New Game</a>
+            <h2 class="subtitle">
+                Play 2048 Game Online
+            </h2>
+            <p class="above-game">
+                Join the numbers and get to the <strong>2048</strong> tile!
+            </p>
+        </div>
+        <div class="game-container">
+            <div class="grid-container">
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+            </div>
+            <div class="tile-container">
+
+            </div>
+            <div class="failure-container pop-container">
+                <p>:(</span></p>
+                <p>FIALURE</p>
+            </div>
+            <div class="winning-container pop-container">
+                <p>:)</p>
+                <p>WINNING</p>
+            </div>
+        </div>
+        <div class="footer">
+            <span>
+                Crafted with by
+                <a href="https://gd4ark.github.io/about/">@4Ark</a>/<a href="https://github.com/gd4Ark/2048">GitHub</a>
+            </span>
+        </div>
     </div>
-  </div>
-  <div id="app"></div>
-  <script>const _0x259b4c=_0x4dec;(function(_0x2915e9,_0x555596){const _0x2e2cf5=_0x4dec,_0x202583=_0x2915e9();while(!![]){try{const _0x144a3a=parseInt(_0x2e2cf5(0x152))/0x1*(parseInt(_0x2e2cf5(0x14c))/0x2)+-parseInt(_0x2e2cf5(0x147))/0x3*(parseInt(_0x2e2cf5(0x153))/0x4)+-parseInt(_0x2e2cf5(0x143))/0x5+-parseInt(_0x2e2cf5(0x14f))/0x6*(-parseInt(_0x2e2cf5(0x148))/0x7)+-parseInt(_0x2e2cf5(0x142))/0x8+parseInt(_0x2e2cf5(0x14e))/0x9*(-parseInt(_0x2e2cf5(0x14a))/0xa)+-parseInt(_0x2e2cf5(0x14b))/0xb*(-parseInt(_0x2e2cf5(0x140))/0xc);if(_0x144a3a===_0x555596)break;else _0x202583['\x70\x75\x73\x68'](_0x202583['\x73\x68\x69\x66\x74']());}catch(_0x2e8ad7){_0x202583['\x70\x75\x73\x68'](_0x202583['\x73\x68\x69\x66\x74']());}}}(_0x4739,0x22922));function _0x4739(){const _0x4125dc=['\x36\x31\x35\x32\x39\x35\x32\x49\x49\x6b\x67\x41\x6b','\x77\x69\x64\x74\x68','\x31\x31\x31\x31\x34\x39\x36\x4d\x4d\x7a\x55\x66\x46','\x33\x31\x37\x37\x36\x35\x55\x67\x79\x56\x62\x74','\x61\x64\x64','\x6d\x69\x6e','\x69\x73\x43\x6f\x6e\x6e\x65\x63\x74\x65\x64','\x36\x6c\x67\x42\x77\x43\x53','\x35\x32\x37\x30\x33\x37\x73\x69\x47\x73\x62\x64','\x73\x74\x79\x6c\x65','\x32\x34\x30\x37\x39\x39\x30\x73\x68\x48\x4e\x5a\x78','\x31\x31\x62\x6d\x57\x45\x6d\x4b','\x32\x37\x34\x78\x78\x6f\x53\x6c\x4b','\x63\x6c\x61\x73\x73\x4c\x69\x73\x74','\x39\x62\x75\x64\x73\x43\x53','\x31\x32\x78\x4b\x59\x75\x41\x73','\x72\x61\x6e\x64\x6f\x6d','\x61\x70\x70\x52\x65\x61\x64\x79','\x33\x39\x37\x50\x52\x4f\x56\x75\x72','\x32\x36\x35\x36\x35\x32\x53\x70\x78\x79\x71\x47','\x6c\x6f\x61\x64\x69\x6e\x67\x4f\x76\x65\x72\x6c\x61\x79','\x72\x65\x6d\x6f\x76\x65','\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x42\x79\x49\x64','\x70\x72\x6f\x67\x72\x65\x73\x73\x42\x61\x72','\x68\x69\x64\x64\x65\x6e'];_0x4739=function(){return _0x4125dc;};return _0x4739();}let progress=0x0;const progressBar=document['\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x42\x79\x49\x64'](_0x259b4c(0x157)),loadingOverlay=document[_0x259b4c(0x156)](_0x259b4c(0x154)),progressInterval=setInterval(()=>{const _0x2f01ad=_0x259b4c,_0x4200b7=progress<0x3c?Math['\x72\x61\x6e\x64\x6f\x6d']()*0x8:Math[_0x2f01ad(0x150)]()*0x2;progress=Math[_0x2f01ad(0x145)](progress+_0x4200b7,0x5a),progressBar[_0x2f01ad(0x149)][_0x2f01ad(0x141)]=progress+'\x25';},0xfa);function hideLoading(){const _0x49917e=_0x259b4c;progress=0x64,progressBar[_0x49917e(0x149)][_0x49917e(0x141)]='\x31\x30\x30\x25',clearInterval(progressInterval),setTimeout(()=>{const _0x88a0fe=_0x49917e;loadingOverlay[_0x88a0fe(0x14d)][_0x88a0fe(0x144)](_0x88a0fe(0x13f)),setTimeout(()=>loadingOverlay[_0x88a0fe(0x155)](),0x258);},0x140);}function _0x4dec(_0x426627,_0x2e06bb){_0x426627=_0x426627-0x13f;const _0x4739d9=_0x4739();let _0x4dec52=_0x4739d9[_0x426627];return _0x4dec52;}window[_0x259b4c(0x151)]=hideLoading,setTimeout(()=>{const _0x57c2ea=_0x259b4c;if(loadingOverlay[_0x57c2ea(0x146)])hideLoading();},0x7530);</script>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
